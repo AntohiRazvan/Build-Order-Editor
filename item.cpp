@@ -28,10 +28,19 @@ vector<int> Item::GetParameters()
     return _parameters;
 }
 
-#include <QDebug>
-void Item::OnViewChanged(vector<int> params)
+int Item::GetId()
 {
-    qDebug() << params[0] ;
+    return _id;
+}
+
+#include <QDebug>
+void Item::OnItemChanged(vector<int> params)
+{
+     _action = (Actions)params[0];
+     for(int i = 1; i < params.size(); i++)
+     {
+         _parameters.push_back(params[i]);
+     }
 }
 
 ostream& operator<<(ostream& os, const Item& item)

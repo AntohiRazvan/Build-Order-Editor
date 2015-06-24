@@ -17,6 +17,7 @@ public:
     Item(int id);
     void SetAction(Actions action);
     Actions GetAction();
+    int GetId();
 
     void AddParameter(int param);
     std::vector<int> GetParameters();
@@ -26,7 +27,7 @@ public:
     friend bool operator==(const Item& item1, const Item& item2);
 
 public slots:
-        void OnViewChanged(std::vector<int>);
+        void OnItemChanged(std::vector<int>);
 };
 
 #endif // ITEM_H

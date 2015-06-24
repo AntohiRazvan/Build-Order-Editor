@@ -1,5 +1,5 @@
 #include "itemview.h"
-#include <QDebug>
+
 using namespace std;
 
 ItemView::ItemView(int id, QWidget *parent) : QWidget(parent)
@@ -36,7 +36,6 @@ void ItemView::draw()
 
 void ItemView::clear()
 {
-    qDebug()<<"Started";
     vector<QWidget*>::iterator i = _elements.begin();
     while (i != _elements.end())
     {
@@ -45,9 +44,6 @@ void ItemView::clear()
         delete(elem);
         i=_elements.begin();
     }
-    _elements.clear();
-    qDebug()<<"Finished";
-
 }
 
 void ItemView::OnActionSelected(int i)
@@ -79,7 +75,7 @@ void ItemView::OnActionSelected(int i)
                     this, SLOT(OnItemChanged()));
             elem = new QSpinBox();
             _elements.push_back(elem);
-            connect(elem, SIGNAL(currentIndexChanged(int)),
+            connect(elem, SIGNAL(valueChanged(int)),
                     this, SLOT(OnItemChanged()));
             draw();
             break;
@@ -92,6 +88,7 @@ void ItemView::OnActionSelected(int i)
 
 void ItemView::OnDeleteButtonPressed()
 {
+    emit ItemDeleted(_id);
     delete this;
 }
 
@@ -111,6 +108,5 @@ void ItemView::OnItemChanged()
             ret.push_back(((QSpinBox*)_elements[1])->value());
             break;
     }
-    qDebug()<<"Sent";
     emit ItemChanged(ret);
 }

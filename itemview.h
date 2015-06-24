@@ -26,6 +26,7 @@ public:
 
 signals:
     void ItemChanged(std::vector<int>);
+    void ItemDeleted(int id);
 
 public slots:
     void OnActionSelected(int i);

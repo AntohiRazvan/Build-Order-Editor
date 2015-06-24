@@ -35,7 +35,10 @@ void MainWindow::OnNewItemButton()
     ItemView *iv =  new ItemView(counter);
     _mainLayout->addWidget(iv);
     _mainLayout->addWidget(_newItemButton);
-    connect(iv, SIGNAL(ItemChanged(std::vector<int>)), \
-            i,  SLOT(OnViewChanged(std::vector<int>)));
+    connect(iv, SIGNAL(ItemChanged(std::vector<int>)),
+            i,  SLOT(OnItemChanged(std::vector<int>)));
+    connect(iv, SIGNAL(ItemDeleted(int)),
+            _model, SLOT(OnItemDeleted(int)));
     counter++;
+    _model->AddItem(i);
 }
