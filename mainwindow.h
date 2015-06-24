@@ -5,9 +5,13 @@
 #include <QComboBox>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QGridLayout>
+#include <QPushButton>
 #include <QWidget>
+#include <QList>
 #include "itemview.h"
 #include "item.h"
+#include "model.h"
 
 namespace Ui {
 class MainWindow;
@@ -16,11 +20,22 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    Model *_model;
     QWidget *_centralWidget;
+    QGridLayout *_mainLayout;
+    QList<ItemView> _itemList;
+    QPushButton *_newItemButton;
 
+
+    static int counter;
+    void AddItemView();
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+public slots:
+    void OnNewItemButton();
+
 
 private:
     Ui::MainWindow *ui;

@@ -1,6 +1,5 @@
 #include "unittypes.h"
 
-
 std::vector<int> UnitTypes::Units = {
                             Protoss_Probe,
                             Protoss_Zealot,
@@ -15,9 +14,9 @@ std::vector<int> UnitTypes::Units = {
                             Protoss_Carrier,
                             Protoss_Observer
                           };
+
 std::vector<int> UnitTypes::Buildings = {
                                 Protoss_Nexus,
-                                Protoss_Pylon,
                                 Protoss_Gateway,
                                 Protoss_Assimilator,
                                 Protoss_Forge,
@@ -66,8 +65,6 @@ char* UnitTypes::ToString(int unit)
             return "Nexus";
         case 155:
             return "Robotics Facility";
-        case 156:
-            return "Pylon";
         case 157:
             return "Assimilator";
         case 159:
@@ -100,63 +97,61 @@ char* UnitTypes::ToString(int unit)
 }
 
 
-int UnitTypes::ToUnitType(char* name)
+int UnitTypes::ToUnitType(const char* name)
 {
-    if(strcmp(name, "Corsair"))
+    if(!strcmp(name, "Corsair"))
         return 60;
-    else if(strcmp(name, "Dark Templar"))
+    else if(!strcmp(name, "Dark Templar"))
         return 61;
-    else if(strcmp(name, "Probe"))
+    else if(!strcmp(name, "Probe"))
         return 64;
-    else if(strcmp(name, "Zealot"))
+    else if(!strcmp(name, "Zealot"))
         return 65;
-    else if(strcmp(name, "Dragoon"))
+    else if(!strcmp(name, "Dragoon"))
         return 66;
-    else if(strcmp(name, "High Templar"))
+    else if(!strcmp(name, "High Templar"))
         return 67;
-    else if(strcmp(name, "Shuttle"))
+    else if(!strcmp(name, "Shuttle"))
         return 69;
-    else if(strcmp(name, "Scout"))
+    else if(!strcmp(name, "Scout"))
         return 70;
-    else if(strcmp(name, "Arbitrer"))
+    else if(!strcmp(name, "Arbitrer"))
         return 71;
-    else if(strcmp(name, "Carrier"))
+    else if(!strcmp(name, "Carrier"))
         return 72;
-    else if(strcmp(name, "Reaver"))
+    else if(!strcmp(name, "Reaver"))
         return 83;
-    else if(strcmp(name, "Observer"))
+    else if(!strcmp(name, "Observer"))
         return 84;
-    else if(strcmp(name, "Nexus"))
+    else if(!strcmp(name, "Nexus"))
         return 154;
-    else if(strcmp(name, "Robotics Facility"))
+    else if(!strcmp(name, "Robotics Facility"))
         return 155;
-    else if(strcmp(name, "Pylon"))
-        return 156;
-    else if(strcmp(name, "Assimilator"))
+    else if(!strcmp(name, "Assimilator"))
         return 157;
-    else if(strcmp(name, "Observatory"))
+    else if(!strcmp(name, "Observatory"))
         return 159;
-    else if(strcmp(name, "Gateway"))
+    else if(!strcmp(name, "Gateway"))
         return 160;
-    else if(strcmp(name, "Photon Cannon"))
+    else if(!strcmp(name, "Photon Cannon"))
         return 162;
-    else if(strcmp(name, "Citadel of Adun"))
+    else if(!strcmp(name, "Citadel of Adun"))
         return 163;
-    else if(strcmp(name, "Cybernetics Core"))
+    else if(!strcmp(name, "Cybernetics Core"))
         return 164;
-    else if(strcmp(name, "Templar Archives"))
+    else if(!strcmp(name, "Templar Archives"))
         return 165;
-    else if(strcmp(name, "Forge"))
+    else if(!strcmp(name, "Forge"))
         return 166;
-    else if(strcmp(name, "Stargate"))
+    else if(!strcmp(name, "Stargate"))
         return 167;
-    else if(strcmp(name, "Fleet Beacon"))
+    else if(!strcmp(name, "Fleet Beacon"))
         return 169;
-    else if(strcmp(name, "Arbitrer Tribunal"))
+    else if(!strcmp(name, "Arbitrer Tribunal"))
         return 170;
-    else if(strcmp(name, "Robotics Support Bay"))
+    else if(!strcmp(name, "Robotics Support Bay"))
         return 171;
-    else if(strcmp(name, "Shield Battery"))
+    else if(!strcmp(name, "Shield Battery"))
         return 172;
     else
         return 0;

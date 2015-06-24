@@ -1,6 +1,8 @@
 #ifndef ACTION_H
 #define ACTION_H
 
+#include <string>
+
 enum Actions
 {
     None,
@@ -16,6 +18,7 @@ class Action
 public:
     Action();
     static char* ToString(Actions action);
+    static int ToAction(const char* actionString);
 };
 
 #endif // ACTION_H

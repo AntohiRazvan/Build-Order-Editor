@@ -38,7 +38,7 @@ public:
     static std::vector<int> Units;
     static std::vector<int> Buildings;
     static char* ToString(int);
-    static int ToUnitType(char*);
+    static int ToUnitType(const char*);
 };
 #endif // UNITTYPES
 

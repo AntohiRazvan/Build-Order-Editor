@@ -8,12 +8,12 @@
 
 class Model
 {
-    std::list<Item> _items;
+    std::list<Item*> _items;
 public:
     Model();
-    void AddItem(Item item);
-    Item GetItem(int i);
-    std::list<Item> GetAllItems();
+    void AddItem(Item* item);
+    Item* GetItem(int i);
+    std::list<Item*> GetAllItems();
     void RemoveItem(int i);
 };
 

@@ -2,8 +2,9 @@
 
 using namespace std;
 
-Item::Item()
+Item::Item(int id)
 {
+    _id = id;
     _action = None;
 }
 
@@ -22,9 +23,15 @@ void Item::AddParameter(int param)
     _parameters.push_back(param);
 }
 
-std::vector<int> Item::GetParameters()
+vector<int> Item::GetParameters()
 {
     return _parameters;
+}
+
+#include <QDebug>
+void Item::OnViewChanged(vector<int> params)
+{
+    qDebug() << params[0] ;
 }
 
 ostream& operator<<(ostream& os, const Item& item)

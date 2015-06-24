@@ -4,13 +4,17 @@
 #include "action.h"
 #include <vector>
 #include <iostream>
+#include <QObject>
+#include <vector>
 
-class Item
+class Item : public QObject
 {
+    Q_OBJECT
+    int _id;
     Actions _action;
     std::vector<int> _parameters;
 public:
-    Item();
+    Item(int id);
     void SetAction(Actions action);
     Actions GetAction();
 
@@ -20,6 +24,9 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Item& item);
     friend std::istream& operator>>(std::istream& is, Item& item);
     friend bool operator==(const Item& item1, const Item& item2);
+
+public slots:
+        void OnViewChanged(std::vector<int>);
 };
 
 #endif // ITEM_H
