@@ -18,6 +18,9 @@ public:
     std::list<Item*> GetAllItems();
     void RemoveItem(int i);
 
+    friend std::ostream& operator<<(std::ostream& os, const Model& model);
+    friend std::istream& operator>>(std::istream& is, Model& model);
+
 public slots:
     void OnItemDeleted(int id);
 };

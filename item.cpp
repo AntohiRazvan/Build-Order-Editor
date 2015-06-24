@@ -33,22 +33,25 @@ int Item::GetId()
     return _id;
 }
 
-#include <QDebug>
 void Item::OnItemChanged(vector<int> params)
 {
-     _action = (Actions)params[0];
-     for(int i = 1; i < params.size(); i++)
-     {
-         _parameters.push_back(params[i]);
-     }
+    _parameters.clear();
+    _action = (Actions)params[0];
+    for(int i = 1; i < params.size(); i++)
+    {
+        _parameters.push_back(params[i]);
+    }
 }
 
 ostream& operator<<(ostream& os, const Item& item)
 {
-    os << item._action;
-    for(int i = 0; i < item._parameters.size(); i++)
+    if(item._action != 0)
     {
-        os << " " << item._parameters[i];
+        os << item._action;
+        for(int i = 0; i < item._parameters.size(); i++)
+        {
+            os << " " << item._parameters[i];
+        }
     }
     return os;
 }
@@ -62,9 +65,6 @@ istream& operator>>(istream& is, Item& item)
     switch(temp)
     {
         case 1:
-            is >> temp;
-            item._parameters.push_back(temp);
-            break;
         case 2:
             is >> temp;
             item._parameters.push_back(temp);

@@ -36,3 +36,28 @@ void Model::OnItemDeleted(int id)
         _items.erase(it);
     }
 }
+
+std::ostream& operator<<(std::ostream& os, const Model& model)
+{
+    for(auto item : model._items)
+    {
+        os << *item;
+        if(item != model._items.back())
+        {
+            os << endl;
+        }
+    }
+    return os;
+}
+
+std::istream& operator>>(std::istream& is, Model& model)
+{
+    int id = 0;
+    while(is.good())
+    {
+        Item *item = new Item(id++);
+        is >> *item;
+        model.AddItem(item);
+    }
+    return is;
+}

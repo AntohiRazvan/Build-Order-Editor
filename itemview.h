@@ -22,6 +22,7 @@ class ItemView : public QWidget
     void draw();
     void clear();
 public:
+    ItemView(int id, std::vector<int> params);
     explicit ItemView(int id, QWidget *parent = 0);
 
 signals:
@@ -29,6 +30,7 @@ signals:
     void ItemDeleted(int id);
 
 public slots:
+    void Delete();
     void OnActionSelected(int i);
     void OnItemChanged();
     void OnDeleteButtonPressed();
