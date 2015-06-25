@@ -76,6 +76,7 @@ void MainWindow::on_actionOpen_triggered()
         connect(this, SIGNAL(ClearView()),
                 iv, SLOT(Delete()));
     }
+    file.close();
 }
 
 void MainWindow::on_actionSave_triggered()
@@ -92,6 +93,7 @@ void MainWindow::on_actionSave_as_triggered()
 
     ofstream file(fileName.toLatin1().data());
     file << *_model;
+    file.close();
 }
 
 void MainWindow::on_actionExit_triggered()
