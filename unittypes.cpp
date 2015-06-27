@@ -33,7 +33,7 @@ std::vector<int> UnitTypes::Buildings = {
                                 Protoss_Shield_Battery
                              };
 
-char* UnitTypes::ToString(int unit)
+const char* UnitTypes::ToString(int unit)
 {
     switch(unit)
     {

@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setMinimumSize(400, 600);
 
+    strcpy(_savePath, "");
     _model = new Model();
     _centralWidget = new QWidget();
     _mainLayout = new QGridLayout(_centralWidget);
@@ -53,6 +54,7 @@ void MainWindow::on_actionOpen_triggered()
     if(fileName == "")
         return;
 
+    strcpy(_savePath, fileName.toLatin1().data());
     ifstream file(fileName.toLatin1().data());
     _model = new Model();
     file >> *_model;
@@ -81,7 +83,15 @@ void MainWindow::on_actionOpen_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
+    if(!strcmp(_savePath, ""))
+    {
+        on_actionSave_as_triggered();
+        return;
+    }
 
+    ofstream file(_savePath);
+    file << *_model;
+    file.close();
 }
 
 void MainWindow::on_actionSave_as_triggered()
@@ -91,6 +101,7 @@ void MainWindow::on_actionSave_as_triggered()
     if(fileName == "")
         return;
 
+    strcpy(_savePath, fileName.toLatin1().data());
     ofstream file(fileName.toLatin1().data());
     file << *_model;
     file.close();
@@ -99,4 +110,10 @@ void MainWindow::on_actionSave_as_triggered()
 void MainWindow::on_actionExit_triggered()
 {
     exit(0);
+}
+
+void MainWindow::on_actionNew_triggered()
+{
+    _model = new Model();
+    emit ClearView();
 }

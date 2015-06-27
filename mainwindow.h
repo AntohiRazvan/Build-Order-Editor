@@ -22,6 +22,7 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    char* _savePath = new char[300];
     Model *_model;
     QWidget *_centralWidget;
     QGridLayout *_mainLayout;
@@ -49,6 +50,8 @@ private slots:
     void on_actionSave_as_triggered();
 
     void on_actionExit_triggered();
+
+    void on_actionNew_triggered();
 
 private:
     Ui::MainWindow *ui;
