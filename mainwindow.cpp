@@ -68,7 +68,7 @@ void MainWindow::on_actionOpen_triggered()
             params.push_back(param);
         }
         _mainLayout->removeWidget(_newItemButton);
-        ItemView *iv =  new ItemView(counter, params);
+        ItemView *iv =  new ItemView(counter++, params);
         _mainLayout->addWidget(iv);
         _mainLayout->addWidget(_newItemButton);
         connect(iv, SIGNAL(ItemChanged(std::vector<int>)),
